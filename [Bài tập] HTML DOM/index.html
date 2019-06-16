@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>HTML DOM - Hồ Đăng San - C0419H1</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <h2 style="margin-left:100px;">Cửa hàng bánh chocola</h2>
+    <div style="float: left">
+        <h5 style="margin-left:100px;">Các loại chocola</h5>
+        <table class="table table-striped table-inverse table-responsive border border-primary" style="width: 350px;margin-left:100px">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>Tên chocola</th>
+                    <th>Giá</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Caocolate Truffles</td>
+                    <td>$34.99</td>
+                    <td><input class="add" type="button" value="Thêm"></td>
+                </tr>
+                <tr>
+                    <td>Pecan Carame Duest</td>
+                    <td>$14.99</td>
+                    <td><input class="add" type="button" value="Thêm"></td>
+                </tr>
+                <tr>
+                    <td>Chocolate Covered Cherries</td>
+                    <td>$28.99</td>
+                    <td><input class="add" type="button" value="Thêm"></td>
+                </tr>
+                <tr>
+                    <td>White Chocolate Ganaches</td>
+                    <td>$22.99</td>
+                    <td><input class="add" type="button" value="Thêm"></td>
+                </tr>
+                <tr>
+                    <td>Chocolate Mints</td>
+                    <td>$17.99</td>
+                    <td><input class="add" type="button" value="Thêm"></td>
+                </tr>
+                <tr>
+                    <td>Chocolate Caramels</td>
+                    <td>$14.99</td>
+                    <td><input class="add" type="button" value="Thêm"></td>
+                </tr>
+                <tr>
+                    <td>Chocolate Toffee Bark</td>
+                    <td>$9.99</td>
+                    <td><input class="add" type="button" value="Thêm"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div style="float: left;margin-left: 300px; margin-bottom: 50px;">
+        <h5>Giỏ hàng của bạn</h5>
+        <table class="table table-striped table-inverse table-responsive border border-danger" style="width: 350px;height: auto;">
+            <thead class="thead-inverse">
+                <tr>
+                    <th style="width:250px;">Tên chocola</th>
+                    <th>Giá</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="addProduct">
+                <tr>
+                    <td>Caocolate Truffles</td>
+                    <td>$34.99</td>
+                    <td><input class="delete" type="button" value="Xóa"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <div class="d-none" style="position: fixed;bottom:5px;right: 10px;">Copyright by @2019 HoDangSan - C0419H1</div>
+</body>
+<script>
+    $(document).ready(function() {
+        let listAdd = document.getElementsByClassName("add");
+        addElement();
+        let listDelete = document.getElementsByClassName("delete");
+        deleteElement();
+
+        function addElement() {
+            for (let i = 0; i < listAdd.length; i++) {
+                listAdd[i].onclick = function() {
+                    let tdInput = this.parentElement;
+                    let tr = tdInput.parentElement;
+                    let listRow = tr.children;
+                    let tdName = listRow[0];
+                    let tdPrice = listRow[1];
+                    $("#addProduct").append("<tr><td>" +
+                        $(tdName).text() +
+                        "</td><td>" +
+                        $(tdPrice).text() +
+                        "</td><td><input class='delete' type='button' value='Xóa'></td></tr>");
+                    deleteElement();
+                }
+            }
+        }
+
+        function deleteElement() {
+            for (let i = 0; i < listDelete.length; i++) {
+                listDelete[i].onclick = function() {
+                    let tdInput = this.parentElement;
+                    let tr = tdInput.parentElement;
+                    $(tr).remove();
+                }
+            }
+        }
+    })
+</script>
+
+</html>
